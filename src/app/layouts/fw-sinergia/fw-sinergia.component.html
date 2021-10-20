@@ -1,0 +1,182 @@
+<div id="main-wrapper" data-layout="horizontal" data-boxed-layout="boxed" [ngClass]="{'show-sidebar': showMobileMenu}" [dir]="options.dir" [attr.data-theme]="options.theme"
+    [attr.data-layout]="options.layout" [attr.data-sidebartype]="options.sidebartype" [attr.data-sidebar-position]="options.sidebarpos"
+    [attr.data-header-position]="options.headerpos" [attr.data-boxed-layout]="options.boxed" data-boxed-layout="full">
+    <!-- ============================================================== -->
+    <!-- Topbar header - style you can find in topbar.scss -->
+    <!-- ============================================================== -->
+    <header class="topbar" [attr.data-navbarbg]="options.navbarbg">
+        <nav class="d-flex top-navbar navbar-expand-md" [ngClass]="(options.navbarbg=='skin6')?'navbar-light':'navbar-dark'">
+            
+            <!-- ============================================================== -->
+            <!-- End Logo -->
+            <!-- ============================================================== -->
+            
+            <div class="navbar-header navbar-collapse collapse" id="navbarSupportedContent" [attr.data-navbarbg]="options.navbarbg" [ngbCollapse]="!isCollapsed" [attr.data-logobg]="options.logobg">
+                <a class="navbar-brand" href="/">
+                    <!-- Logo icon -->
+                    <b class="logo-icon">
+                        <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
+                        <!-- Light Logo icon -->
+                        <img src="assets/images/Claro.png" alt="homepage" class="light-logo" />
+                    </b>
+                    <!--End Logo icon -->                    
+                </a>
+                <h6 href="/" style="color: white;">Bienvenido {{nombreUsuarioLogin}}</h6>
+                <app-navigation class="w-100"></app-navigation>
+                <!-- <a class="topbartoggler d-block d-md-none waves-effect waves-light" href="javascript:void(0)" (click)="isCollapsed = !isCollapsed"
+                    [attr.aria-expanded]="!isCollapsed" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent">
+                    <i class="ti-more"></i>
+                </a> -->
+            </div>            
+        </nav>
+        <!-- <nav class="d-flex top-navbar navbar-expand-md" [ngClass]="(options.navbarbg=='skin6')?'navbar-light':'navbar-dark'">
+            <a class="navbar-brand" href="#"><img src="assets/images/Claro.png" alt="homepage" class="light-logo" /></a>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                  <li class="nav-item active">
+                    <a class="nav-link" href="#">
+                      <h6 href="/" style="color: white;">Bienvenido {{nombreUsuarioLogin}}</h6> 
+                    </a>
+                  </li>
+                </ul>
+                <ul class="navbar-nav float-right">    
+                    <li class="nav-item" ngbDropdown placement="bottom-right">
+                        <a style="color: white; cursor: pointer;" (click)="openAlert(content1)">
+                            <i class="fa fa-power-off m-r-5 m-l-5"></i> Salir del Sistema
+                        </a>
+                    </li>                
+                    <ng-template #content1 let-modal>
+                        <div class="modal-header colorClaro">
+                            <h4 class="modal-title" style="text-align: center;">Salir del Sistema</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>¿Realmente desea salir del sistema?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" (click)="logout(); modal.close('Close click')">SI</button>
+                            <button type="button" class="btn btn-danger" (click)="modal.close('Close click')">NO</button>
+                        </div>
+                    </ng-template>
+                </ul>
+              </div>
+
+        </nav> -->
+
+    </header>
+
+        <!-- ============================================================== -->
+        <!-- Container fluid  -->
+        <!-- ============================================================== -->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-header bg-danger">                             
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <h4 class="text-white">Innovation Manager Shopping</h4>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="float-right text-white">
+                                        <h5>{{tituloModulos}}</h5>
+                                    </div>
+                                </div>
+                            </div>                           
+                        </div>                                                                 
+                        
+                        <!-- Inicio tabs -->
+                        <ngb-tabset  *ngIf="bloqueoTabs">
+                            <ngb-tab>
+                                <ng-template ngbTabTitle >
+                                    <div ngbDropdown placement="top-left" class="d-inline-block">
+                                        <button
+                                            class="btn btn-outline-danger"
+                                            id="dropdownBasic2"
+                                            ngbDropdownToggle
+                                        >
+                                            Seguridad
+                                        </button>
+                                        <div ngbDropdownMenu aria-labelledby="dropdownBasic2">
+                                            <button class="dropdown-item"  [disabled]="habilitarTabs">Usuarios</button>
+                                        </div>
+                                    </div>
+                                </ng-template>
+                                <ng-template ngbTabContent>
+                                </ng-template>
+                            </ngb-tab>
+                            <ngb-tab>
+                                <ng-template ngbTabTitle >
+                                    <div ngbDropdown placement="top-left" class="d-inline-block">
+                                        <button
+                                            class="btn btn-outline-danger"
+                                            id="dropdownBasic1"
+                                            ngbDropdownToggle
+                                        >
+                                            Ventas
+                                        </button>
+                                        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                                            <button class="dropdown-item" [disabled]="habilitarTabs">Nueva Venta</button>
+                                            <button class="dropdown-item" [disabled]="habilitarTabs">Historico Ventas</button>
+                                        </div>
+                                    </div></ng-template>
+                                <ng-template ngbTabContent>
+                                    
+                                </ng-template>
+                            </ngb-tab>
+                            <ngb-tab>
+                                <ng-template ngbTabTitle >
+                                    <div ngbDropdown placement="top-left" class="d-inline-block">
+                                        <button
+                                            class="btn btn-outline-danger"
+                                            id="dropdownBasic1"
+                                            ngbDropdownToggle
+                                        >
+                                            Productos
+                                        </button>
+                                        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                                            <button class="dropdown-item" [disabled]="habilitarTabs">Ingreso de Productos</button>
+                                            <button class="dropdown-item" [disabled]="habilitarTabs">Actualizar Inventario</button>
+                                        </div>
+                                    </div></ng-template>
+                                <ng-template ngbTabContent>
+                                    
+                                </ng-template>
+                            </ngb-tab>
+                        </ngb-tabset>                        
+                        <!-- Fin tabs -->
+                    </div>
+                </div>                
+            </div>
+            <!-- Inicio Dependencias de Tabs -->            
+        </div>
+
+        <ng-template #content1 let-modal>
+            <div class="modal-header colorClaro">
+                <h4 class="modal-title" style="text-align: center;">Salir del Sistema</h4>
+            </div>
+            <div class="modal-body">
+                <p>¿Realmente desea salir del sistema?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" (click)="logout(); modal.close('Close click')">SI</button>
+                <button type="button" class="btn btn-danger" (click)="modal.close('Close click')">NO</button>
+            </div>
+        </ng-template>
+        <!-- ============================================================== -->
+        <!-- End Container fluid  -->
+        <!-- ============================================================== -->  
+        <!-- ============================================================== -->
+        <!-- Inicio Ventanas Facturador -->
+        <!-- ============================================================== -->  
+        
+</div>
+<div class="container-fluid" *ngIf="ingresoSegUsuarios">
+    <app-seg-usuarios></app-seg-usuarios>
+</div>
+<div class="container-fluid" *ngIf="ingresoCenOficinas">
+    <app-centros-oficinas></app-centros-oficinas>
+</div>
+<div class="container-fluid" *ngIf="ingresoProcesoXPerfil">
+    <app-proceso-x-perfil></app-proceso-x-perfil>
+</div>
